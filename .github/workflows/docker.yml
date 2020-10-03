@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: set image tag for github
-        run: echo '::set-env name=GTAG::docker.pkg.github.com/${{ github.repository }}/paper'
+        run: echo '::set-env name=GTAG::docker.pkg.github.com/${{ github.repository }}/pandoc'
       - name: Build the Docker image
         run: docker build -t $GTAG:${{ github.run_number }} -t $GTAG:latest .
       - name: Login to GitHub Package Registry
