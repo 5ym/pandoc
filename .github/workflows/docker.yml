@@ -1,4 +1,4 @@
-name: register github packages
+name: Update GitHub Container Registry
 
 on:
   push:
@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: set image tag for github
+      - name: set image tag for GitHub
         run: echo '::set-env name=GTAG::ghcr.io/${{ github.repository_owner }}/pandoc'
       - name: Build the Docker image
         run: docker build -t $GTAG:${{ github.run_number }} -t $GTAG:latest .
-      - name: Login to GitHub Package Registry
+      - name: Login to GitHub Container Registry
         run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
-      - name: Push the Docker image to GitHub Package Registry
+      - name: Push the Docker image to GitHub Container Registry
         run: docker push $GTAG
