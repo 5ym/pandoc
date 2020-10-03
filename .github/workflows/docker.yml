@@ -1,0 +1,20 @@
+name: register github packages
+
+on:
+  push:
+    branches: 
+      - docker
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set image tag for github
+        run: echo '::set-env name=GTAG::docker.pkg.github.com/${{ github.repository }}/paper'
+      - name: Build the Docker image
+        run: docker build -t $GTAG:${{ github.run_number }} -t $GTAG:latest .
+      - name: Login to GitHub Package Registry
+        run: docker login docker.pkg.github.com -u 5ym -p ${{ secrets.GITHUB_TOKEN }}
+      - name: Push the Docker image to GitHub Package Registry
+        run: docker push $GTAG
