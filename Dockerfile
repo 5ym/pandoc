@@ -1,7 +1,7 @@
 FROM pandoc/latex
 
 RUN tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet && tlmgr update --self && \
-    tlmgr install collection-langjapanese footnotebackref mdframed zref needspace sourcesanspro ly1 sourcecodepro titling ctex && \
+    tlmgr install ctex footnotebackref mdframed zref needspace sourcesanspro sourcecodepro titling && \
     wget https://noto-website.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip && mkdir -p /usr/share/fonts/NotoSerifCJKjp && \
     unzip NotoSerifCJKjp-hinted.zip -d /usr/share/fonts/NotoSerifCJKjp/ && rm NotoSerifCJKjp-hinted.zip && fc-cache -fv && \
     mkdir -p /root/.local/share/pandoc/templates && \
