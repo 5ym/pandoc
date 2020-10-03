@@ -2,8 +2,6 @@ name: register github packages
 
 on:
   push:
-    branches: 
-      - docker
 
 jobs:
   register:
