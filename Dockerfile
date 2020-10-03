@@ -1,5 +1,5 @@
 FROM pandoc/latex
-
+LABEL org.opencontainers.image.source https://github.com/5ym/pandoc
 RUN tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet && tlmgr update --self && \
     tlmgr install ctex footnotebackref mdframed zref needspace sourcesanspro sourcecodepro titling && \
     wget https://noto-website.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip && mkdir -p /usr/share/fonts/NotoSerifCJKjp && \
