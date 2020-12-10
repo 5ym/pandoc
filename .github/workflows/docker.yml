@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: set image tag for GitHub
-        run: echo '::set-env name=GTAG::ghcr.io/${{ github.repository_owner }}/pandoc'
+        run: echo 'GTAG=ghcr.io/${{ github.repository_owner }}/pandoc' >> $GITHUB_ENV
       - name: Build the Docker image
         run: docker build -t $GTAG:${{ github.run_number }} -t $GTAG:latest .
       - name: Login to GitHub Container Registry
