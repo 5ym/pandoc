@@ -10,9 +10,6 @@ env:
 jobs:
   register:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
