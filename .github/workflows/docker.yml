@@ -2,6 +2,7 @@ name: Update GitHub Container Registry
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
