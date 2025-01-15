@@ -1,4 +1,4 @@
-FROM pandoc/extra
+FROM pandoc/extra:latest-ubuntu
 LABEL org.opencontainers.image.source https://github.com/5ym/pandoc
 RUN wget -O font.zip https://fonts.google.com/download?family=BIZ%20UDPMincho && mkdir -p /usr/share/fonts/BIZUDPMincho && \
     unzip font.zip -d /usr/share/fonts/BIZUDPMincho/ && rm font.zip && fc-cache -fv && \
