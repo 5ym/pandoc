@@ -1,5 +1,4 @@
 FROM pandoc/extra:latest-ubuntu
-LABEL org.opencontainers.image.source https://github.com/5ym/pandoc
-RUN wget -O font.zip https://fonts.google.com/download?family=BIZ%20UDPMincho && mkdir -p /usr/share/fonts/BIZUDPMincho && \
-    unzip font.zip -d /usr/share/fonts/BIZUDPMincho/ && rm font.zip && fc-cache -fv && \
-    apk add --no-cache npm && npm i -g markdownlint-cli2
+LABEL org.opencontainers.image.source=https://github.com/5ym/pandoc
+COPY *.ttf /usr/share/fonts/BIZUDPMincho/
+RUN fc-cache -fv && apt -y install npm && npm i -g markdownlint-cli2
