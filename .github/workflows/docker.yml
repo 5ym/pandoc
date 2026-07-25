@@ -2,6 +2,9 @@ name: Update GitHub Container Registry
 on:
   push:
   workflow_dispatch:
+  schedule:
+    # Rebuild daily to pick up updates to the pandoc/extra base image.
+    - cron: "0 0 * * *"
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -34,6 +37,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
+          pull: true
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
