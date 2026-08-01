@@ -1,0 +1,12 @@
+# 日本語ドキュメント向けの既定値。
+# イメージ内では /usr/local/share/pandoc/defaults/ja.yaml に配置され、
+# ENTRYPOINT が `--defaults=ja` として自動で読み込む。
+#
+# フォントは variables: ではなく metadata: で指定していることに注意。
+# variables: だと -V CJKmainfont=... を渡したときに値が連結されてしまい、
+# 上書きできなくなる。
+pdf-engine: xelatex
+metadata:
+  CJKmainfont: BIZ UDPMincho
+  CJKsansfont: BIZ UDPGothic
+  CJKmonofont: BIZ UDPGothic
